@@ -1,0 +1,24 @@
+POST http://localhost:3000/api/v1/prompts
+Content-Type: application/json
+
+{
+  "title": "What is your favorite color?",
+  "prompt": "Please tell us your favorite color."
+}
+
+###
+GET http://localhost:3000/api/v1/prompts/2
+
+###
+PUT http://localhost:3000/api/v1/prompts
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "What is your favorite color?",
+  "isActive": true,
+  "prompt": "Please tell us your favorite color."
+}
+
+###
+DELETE http://localhost:3000/api/v1/prompts/2

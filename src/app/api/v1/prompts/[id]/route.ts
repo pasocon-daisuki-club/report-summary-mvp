@@ -3,29 +3,27 @@ import {PrismaClient} from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(request: NextRequest, {params}: { params: { id: number } }) {
+export async function GET(request: NextRequest, {params}: { params: { id: string } }) {
     try {
-        const prompt = await prisma.prompt.findUniqueOrThrow(
-            {
-                where: {
-                    id: params.id
-                }
+        const prompt = await prisma.prompt.findUniqueOrThrow({
+            where: {
+                id: Number(params.id)
             }
-        );
+        });
         return NextResponse.json(prompt);
     } catch (e) {
         return NextResponse.json(
-            {error: `Prompt with id ${params.id} not found`},
+            {error: e},
             {status: 404}
         )
     }
 }
 
-export async function DELETE(request: NextRequest, {params}: { params: { id: number } }) {
+export async function DELETE(request: NextRequest, {params}: { params: { id: string } }) {
     try {
         const prompt = await prisma.prompt.update({
             where: {
-                id: params.id
+                id: Number(params.id)
             },
             data: {
                 isActive: false
@@ -34,7 +32,7 @@ export async function DELETE(request: NextRequest, {params}: { params: { id: num
         return NextResponse.json(prompt);
     } catch (e) {
         return NextResponse.json(
-            {error: `Prompt with id ${params.id} not found`},
+            {error: e},
             {status: 404}
         )
     }

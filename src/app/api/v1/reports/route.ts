@@ -13,12 +13,11 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        request.json().then(async (data) => {
-            const prompt = await prisma.report.create({
-                data: data
-            });
-            return NextResponse.json(prompt);
+        const data = await request.json();
+        const report = await prisma.report.create({
+            data: data
         });
+        return NextResponse.json(report);
     } catch (e) {
         return NextResponse.json(
             {error: `Report not created`},
@@ -27,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 }
 
-export async function PUT(request: NextRequest, {params}: { params: { id: number } }) {
+export async function PUT(request: NextRequest) {
 
     if (request.headers.get('content-type') !== 'application/json') {
         return NextResponse.json(
@@ -37,18 +36,17 @@ export async function PUT(request: NextRequest, {params}: { params: { id: number
     }
 
     try {
-        request.json().then(async (data) => {
-            const prompt = await prisma.report.update({
-                where: {
-                    id: params.id
-                },
-                data: data
-            });
-            return NextResponse.json(prompt);
+        const data = await request.json();
+        const report = await prisma.report.update({
+            where: {
+                id: data.id
+            },
+            data: data
         });
+        return NextResponse.json(report);
     } catch (e) {
         return NextResponse.json(
-            {error: `Report with id ${params.id} not found`},
+            {error: e},
             {status: 404}
         )
     }

@@ -18,7 +18,7 @@ model Prompt {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   isActive  Boolean  @default(true)
-  title String
+  title     String
   prompt    String
   results   Result[]
 }

@@ -13,12 +13,11 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        request.json().then(async (data) => {
-            const prompt = await prisma.result.create({
-                data: data
-            });
-            return NextResponse.json(prompt);
+        const data = await request.json();
+        const result = await prisma.result.create({
+            data: data
         });
+        return NextResponse.json(result);
     } catch (e) {
         return NextResponse.json(
             {error: `Result not created`},
@@ -27,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 }
 
-export async function PUT(request: NextRequest, {params}: { params: { id: number } }) {
+export async function PUT(request: NextRequest) {
 
     if (request.headers.get('content-type') !== 'application/json') {
         return NextResponse.json(
@@ -37,18 +36,17 @@ export async function PUT(request: NextRequest, {params}: { params: { id: number
     }
 
     try {
-        request.json().then(async (data) => {
-            const prompt = await prisma.result.update({
-                where: {
-                    id: params.id
-                },
-                data: data
-            });
-            return NextResponse.json(prompt);
+        const data = await request.json();
+        const result = await prisma.result.update({
+            where: {
+                id: data.id
+            },
+            data: data
         });
+        return NextResponse.json(result);
     } catch (e) {
         return NextResponse.json(
-            {error: `Result with id ${params.id} not found`},
+            {error: e},
             {status: 404}
         )
     }
