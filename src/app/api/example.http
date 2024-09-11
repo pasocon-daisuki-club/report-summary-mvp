@@ -22,3 +22,76 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/api/v1/prompts/2
+
+###
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+  "email": "hoge@examle.com",
+  "name": "Hoge"
+}
+
+###
+GET localhost:3000/api/v1/users/1
+
+###
+PUT http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "fuga@example.com"
+}
+
+###
+DELETE http://localhost:3000/api/v1/users/1
+
+###
+POST http://localhost:3000/api/v1/reports
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "content": "I like blue."
+}
+
+###
+GET http://localhost:3000/api/v1/reports/1
+
+###
+PUT http://localhost:3000/api/v1/reports
+Content-Type: application/json
+
+{
+  "id": 1,
+  "content": "I like red."
+}
+
+###
+DELETE http://localhost:3000/api/v1/reports/1
+
+###
+POST http://localhost:3000/api/v1/results
+Content-Type: application/json
+
+{
+  "promptId": 1,
+  "reportId": 1,
+  "result": "blue"
+}
+
+###
+GET http://localhost:3000/api/v1/results/1
+
+###
+PUT http://localhost:3000/api/v1/results
+Content-Type: application/json
+
+{
+  "id": 1,
+  "result": "red"
+}
+
+###
+DELETE http://localhost:3000/api/v1/results/1
