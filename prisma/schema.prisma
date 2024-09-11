@@ -18,7 +18,7 @@ model Prompt {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   isActive  Boolean  @default(true)
-  title String
+  title     String
   prompt    String
   results   Result[]
 }
@@ -40,6 +40,7 @@ model Report {
   isActive  Boolean  @default(true)
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
+  content   String
   results   Result[]
 }
 
