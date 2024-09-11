@@ -20,3 +20,22 @@ export async function GET(request: NextRequest, {params}: { params: { id: number
         )
     }
 }
+
+export async function DELETE(request: NextRequest, {params}: { params: { id: number } }) {
+    try {
+        const prompt = await prisma.report.update({
+            where: {
+                id: params.id
+            },
+            data: {
+                isActive: false
+            }
+        });
+        return NextResponse.json(prompt);
+    } catch (e) {
+        return NextResponse.json(
+            {error: `Prompt with id ${params.id} not found`},
+            {status: 404}
+        )
+    }
+}
