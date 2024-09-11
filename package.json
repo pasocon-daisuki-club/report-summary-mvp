@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev-postgres": "docker run --rm --name postgres-local -p 5432:5432 -e POSTGRES_PASSWORD=daisuki -d postgres"
   },
   "dependencies": {
     "next": "^14.2.9",
@@ -20,6 +21,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.9",
     "postcss": "^8",
+    "prisma": "^5.19.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
