@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev-postgres": "docker run --rm --name postgres-local -p 5432:5432 -e POSTGRES_PASSWORD=daisuki -d postgres"
+    "dev-postgres": "docker run --rm --name postgres-local -p 5432:5432 -e POSTGRES_PASSWORD=daisuki -d postgres",
+    "dev-migrate": "npx prisma migrate dev"
   },
   "dependencies": {
     "next": "^14.2.9",
