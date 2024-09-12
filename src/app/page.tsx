@@ -1,4 +1,5 @@
 import {PrismaClient} from "@prisma/client";
+import {ReportsTable} from "@/ui/report";
 
 // Login function is not implemented yet
 const userId = 1;
@@ -14,16 +15,16 @@ export default async function Home() {
             reports: true
         }
     });
+    const reports = await prisma.report.findMany({
+        where: {
+            userId: userId,
+            isActive: true
+        }
+    });
     return (
         <div>
             <h1>Reports</h1>
-            <ul>
-                {user?.reports.map((report) => (
-                    <li key={report.id}>
-                        <p>{report.content}</p>
-                    </li>
-                ))}
-            </ul>
+            <ReportsTable reports={reports}/>
         </div>
     );
 }
