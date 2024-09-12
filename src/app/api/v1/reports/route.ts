@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(report);
     } catch (e) {
         return NextResponse.json(
-            {error: `Report not created`},
+            {error: e},
             {status: 404}
         )
     }

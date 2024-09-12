@@ -52,7 +52,11 @@ POST http://localhost:3000/api/v1/reports
 Content-Type: application/json
 
 {
-  "userId": 1,
+  "user": {
+    "connect": {
+      "id": 1
+    }
+  },
   "content": "I like blue."
 }
 
@@ -76,8 +80,16 @@ POST http://localhost:3000/api/v1/results
 Content-Type: application/json
 
 {
-  "promptId": 1,
-  "reportId": 1,
+  "prompt": {
+    "connect": {
+      "id": 1
+    }
+  },
+  "report": {
+    "connect": {
+      "id": 1
+    }
+  },
   "result": "blue"
 }
 
