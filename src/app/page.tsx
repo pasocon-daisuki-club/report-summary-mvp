@@ -1,5 +1,6 @@
 import {PrismaClient} from "@prisma/client";
-import {ReportsTable} from "@/ui/report";
+import {ReportForm, ReportsTable} from "@/ui/report";
+import {ContentHeader} from "@/ui/element";
 
 // Login function is not implemented yet
 const userId = 1;
@@ -23,8 +24,16 @@ export default async function Home() {
     });
     return (
         <div>
-            <h1>Reports</h1>
-            <ReportsTable reports={reports}/>
+
+            <ContentHeader>Report Form</ContentHeader>
+            <div className="flex justify-center w-full bg-gray-50">
+                <ReportForm/>
+            </div>
+
+            <ContentHeader>Reports</ContentHeader>
+            <div className="flex justify-center w-full">
+                <ReportsTable reports={reports}/>
+            </div>
         </div>
     );
 }

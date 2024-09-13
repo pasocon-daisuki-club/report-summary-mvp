@@ -12,7 +12,6 @@ export function ReportsTable(props: {reports: Report[]}): ReactNode {
                     <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Content</th>
                     <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Created At</th>
                     <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Updated At</th>
-                    <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Results</th>
                     <th className="px-4 py-2"></th>
                 </tr>
                 </thead>
@@ -35,7 +34,7 @@ export function ReportRow(props: {report: Report}): ReactNode {
             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{props.report.content}</td>
             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{props.report.createdAt.toLocaleTimeString()}</td>
             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{props.report.updatedAt.toLocaleTimeString()}</td>
-            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+            <td className="whitespace-nowrap px-4 py-2">
                 <a
                     href="#"
                     className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
@@ -44,5 +43,13 @@ export function ReportRow(props: {report: Report}): ReactNode {
                 </a>
             </td>
         </tr>
+    );
+}
+
+export function ReportForm(): ReactNode {
+    return (
+        <div>
+
+        </div>
     );
 }
